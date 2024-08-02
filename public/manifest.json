@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Tag and Alt Text Viewer",
+  "version": "1.0",
+  "description": "Displays tags and alt image text on hover",
+  "permissions": ["activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Toggle Tag Viewer"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
