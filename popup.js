@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const titleDiv = document.getElementById('title');
     const descriptionDiv = document.getElementById('description');
     const toggleButton = document.getElementById('toggle-hover');
+    const toggleButtonTxt = document.getElementById('textComp');
     // Fetch and display the summary of h1 and h2 tags
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.scripting.executeScript({
@@ -21,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
             chrome.scripting.executeScript({
                 target: { tabId: tabs[0].id },
                 function: toggleHoverFeature
+            }, (result) => {
+                if (toggleButtonTxt.innerText === 'Boost 😎') {
+                    toggleButtonTxt.innerText = 'Boost 🚀'
+                } else {
+                    toggleButtonTxt.innerText = 'Boost 😎'
+                }
             });
         });
     });
@@ -33,14 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function getTagSummary() {
+
     function getMetaContentByName(name) {
+
+        //capitalize words
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
         const selectedMetaTags = document.querySelectorAll('meta[name="description"], meta[name="title"]');
         const metaTag = Array.from(selectedMetaTags).find(meta => meta.getAttribute('name') === name);
         if (metaTag) {
             return metaTag.getAttribute("content");
         } else {
             console.error();
-            return `Oh Boost it🚀🎉 "${name}" not found.`;
+            return `Oh-no!, I  don't have a ${capitalizeFirstLetter(name)} tag. Boooost 🚀🚀me `;
         }
     }
 

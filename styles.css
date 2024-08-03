@@ -38,6 +38,7 @@ h2 {
     justify-content: center;
     line-height: 1em;
     max-width: 100%;
+    width: 100%;
     min-width: 140px;
     padding: 3px;
     text-decoration: none;
@@ -74,11 +75,11 @@ h2 {
 }
 
 .fastBody {
+    margin: 2%;
 
-
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
     background: rgba(255, 255, 255, 0.64);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10.5px);
     -webkit-backdrop-filter: blur(10.5px);
     border: 1px solid rgba(255, 255, 255, 0.81);
