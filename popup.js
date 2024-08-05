@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             chrome.scripting.executeScript({
                 target: { tabId: tabs[0].id },
                 function: toggleHoverFeature
-            }, (result) => {
+            }, () => {
                 if (toggleButtonTxt.innerText === 'Boost 😎') {
                     toggleButtonTxt.innerText = 'Boost 🚀'
                 } else {
@@ -40,14 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function getTagSummary() {
-
+    console.log(document.title)
     function getMetaContentByName(name) {
-
         //capitalize words
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
-
         const selectedMetaTags = document.querySelectorAll('meta[name="description"], meta[name="title"]');
         const metaTag = Array.from(selectedMetaTags).find(meta => meta.getAttribute('name') === name);
         if (metaTag) {
@@ -58,7 +56,7 @@ function getTagSummary() {
         }
     }
 
-    const title = getMetaContentByName('title')
+    const title = document.title || getMetaContentByName('title')
     const description = getMetaContentByName('description')
     const h1Tags = document.querySelectorAll('h1');
     const h2Tags = document.querySelectorAll('h2');
