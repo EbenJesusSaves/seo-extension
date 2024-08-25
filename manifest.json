@@ -3,13 +3,18 @@
   "name": "Tag and Alt Hover Info",
   "version": "1.0",
   "description": "Shows tag types for h1 and h2, and alt text for images on hover, with a popup for tag summary and a toggle button.",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "tabs", "identity"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["<all_urls>"],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_title": "SEO ON"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://*/*", "https://*/*"],
       "js": ["content.js"],
       "css": ["styles.css"]
     }
